@@ -348,18 +348,3 @@ The report will cover:
 
 3. V. Havlíček et al., "Supervised Learning with Quantum-Enhanced Feature Spaces," *Nature*, vol. 567, pp. 209–212, 2019. [https://doi.org/10.1038/s41586-019-0980-2](https://doi.org/10.1038/s41586-019-0980-2)
 
-## Author
-
-**Aishwarya Reddy Sarsan**
-
-Graduate Student — Computer Science
-
-Research Interests:
-- Quantum Machine Learning
-- Healthcare Artificial Intelligence
-- Quantum Computing
-- Classical and Quantum Hybrid Algorithms
-
----
-
-⭐ If you find this project interesting, feel free to explore the repository and follow its progress.
