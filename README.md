@@ -1,276 +1,184 @@
-# Quantum Machine Learning for Breast Cancer Classification
-
-<p align="center">
-  <strong>Evaluating Quantum Kernel Learning for Breast Cancer Classification Under Feature Compression</strong>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Domain-Healthcare%20AI-blue" />
-  <img src="https://img.shields.io/badge/Quantum%20Computing-Qiskit-purple" />
-  <img src="https://img.shields.io/badge/Machine%20Learning-Scikit--learn-orange" />
-  <img src="https://img.shields.io/badge/Language-Python-yellow" />
-</p>
+# Evaluating Quantum Machine Learning for Diabetes Risk Prediction Under Different Feature-Selection Strategies
 
 ## Overview
 
-Breast cancer is one of the most common cancers worldwide. Early and accurate diagnosis plays an important role in improving patient outcomes.
+This project investigates the use of Quantum Machine Learning (QML) for diabetes classification using clinical measurements from the Pima Indians Diabetes Dataset.
 
-This project investigates the application of **Quantum Machine Learning (QML)** to breast cancer classification using the Breast Cancer Wisconsin Diagnostic (WDBC) dataset.
+The primary goal is to evaluate how different feature-selection strategies affect the performance and computational cost of a Variational Quantum Classifier (VQC). The quantum model will be compared with classical machine-learning models under consistent experimental conditions.
 
-The primary objective is to evaluate whether quantum kernel learning can provide competitive classification performance compared with classical machine learning models when healthcare data are compressed into a limited number of features.
-
-The project combines classical machine learning, quantum feature maps, and quantum kernel methods using Python and Qiskit.
-
-> **Research focus:** Evaluating predictive performance, computational requirements, circuit complexity, and scalability of quantum machine learning models for healthcare classification.
+This project is intended for academic research and educational purposes. It is not a clinical diagnostic tool.
 
 ## Research Question
 
-Does quantum kernel learning provide competitive breast cancer classification performance when the number of input features and qubits is limited?
+**How do different feature-selection strategies affect the predictive performance and computational cost of a Variational Quantum Classifier for diabetes classification compared with classical machine-learning models?**
 
-### Research Objectives
-
-- Develop classical machine learning baselines for breast cancer classification.
-- Implement a Quantum Kernel Support Vector Classifier using Qiskit.
-- Investigate the impact of PCA-based feature compression.
-- Compare classical and quantum models across different feature dimensions.
-- Evaluate classification performance and computational requirements.
-- Analyze the limitations and scalability of quantum kernel learning for healthcare applications.
+The project explores whether reducing the number of input features can improve the feasibility of quantum model training while maintaining competitive classification performance.
 
 ## Dataset
 
-This project uses the **Breast Cancer Wisconsin Diagnostic (WDBC)** dataset.
+The project uses the **Pima Indians Diabetes Dataset**, a commonly studied dataset for binary diabetes classification.
 
-**Dataset source:** [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic)
+The dataset contains clinical measurements for 768 female patients of Pima Indian heritage who were at least 21 years old.
 
-| Property | Description |
+### Features
+
+| Feature | Description |
 |---|---|
-| Dataset | Breast Cancer Wisconsin Diagnostic |
-| Samples | 569 |
-| Original features | 30 |
-| Target classes | Malignant and Benign |
-| Data type | Numerical |
-| Missing values | None |
-| Application | Breast cancer diagnosis support |
+| Pregnancies | Number of pregnancies |
+| Glucose | Plasma glucose concentration |
+| BloodPressure | Diastolic blood pressure |
+| SkinThickness | Triceps skinfold thickness |
+| Insulin | Two-hour serum insulin |
+| BMI | Body mass index |
+| DiabetesPedigreeFunction | Diabetes pedigree function |
+| Age | Age in years |
 
-The dataset contains measurements of cell nuclei extracted from digitized fine-needle aspirate images of breast masses.
+### Target
 
-The features include:
+The target variable, `Outcome`, represents the recorded diabetes classification:
 
-- Radius
-- Texture
-- Perimeter
-- Area
-- Smoothness
-- Compactness
-- Concavity
-- Symmetry
+- `0`: No diabetes recorded
+- `1`: Diabetes recorded
 
-Each measurement is represented using mean, standard error, and worst-value statistics.
+**Dataset considerations:** Several clinical measurements contain zero values that may represent missing or invalid measurements rather than true physiological values. These values will be investigated and handled during preprocessing.
 
-The classification target is:
-
-- **Malignant (M):** Cancerous tumor
-- **Benign (B):** Non-cancerous tumor
+The dataset also has population-specific limitations. Results should not be interpreted as validated diabetes-risk predictions for the general population.
 
 ## Methodology
 
-The project follows a comparative experimental framework.
+The project follows a controlled experimental workflow:
 
-### 1. Data Preprocessing
+1. Load and explore the dataset.
+2. Inspect missing, invalid, and zero-valued measurements.
+3. Split the data into stratified training and test sets.
+4. Fit preprocessing transformations using only the training data.
+5. Apply different feature-selection strategies.
+6. Train classical machine-learning models.
+7. Train a Variational Quantum Classifier using selected features.
+8. Evaluate predictive performance and computational cost.
+9. Compare results across feature subsets and model types.
 
-- Load the WDBC dataset.
-- Separate the diagnostic features and target labels.
-- Encode the target labels.
-- Perform stratified train-test splitting.
-- Standardize the features.
-- Apply Principal Component Analysis (PCA) for feature compression.
+Feature selection and preprocessing will be performed within the training data to prevent data leakage.
 
-All preprocessing transformations are fitted using training data only to prevent data leakage.
+## Models
 
-### 2. Classical Machine Learning
+### Classical Machine-Learning Models
 
-The following classical models are used as baselines:
+The following models will serve as classical baselines:
 
-| Model | Purpose |
+- Logistic Regression
+- Random Forest
+- Support Vector Machine (SVM) with an RBF kernel
+
+### Quantum Machine-Learning Model
+
+**Variational Quantum Classifier (VQC)**
+
+The VQC uses a parameterized quantum circuit to encode selected features and learn a classification function.
+
+The circuit consists of:
+
+- A feature-encoding circuit
+- Parameterized quantum gates
+- Measurement operations
+- A classical optimization procedure for updating circuit parameters
+
+The number of selected features will be connected to the number of qubits used in the quantum model.
+
+The initial experiments will use small circuit configurations, such as 2 and 4 qubits, to keep simulation computationally manageable.
+
+## Feature-Selection Strategies
+
+The project will compare the following strategies:
+
+| Strategy | Description |
 |---|---|
-| Logistic Regression | Linear classification baseline |
-| Support Vector Machine (RBF) | Nonlinear classification baseline |
-| Random Forest | Tree-based classification baseline |
+| All Features | Use all eight available clinical features |
+| Correlation-Based Selection | Select features based on their relationship with the target |
+| SelectKBest | Select the top features using a statistical scoring method |
+| Random Forest Feature Importance | Select features based on importance estimated by a Random Forest |
 
-### 3. Quantum Machine Learning
+The selected features will be evaluated using both classical models and the VQC where appropriate.
 
-The primary quantum model is a **Quantum Kernel Support Vector Classifier (QSVC)**.
+## Evaluation Metrics
 
-The quantum kernel approach uses a quantum feature map to encode classical healthcare features into quantum states.
-
-The similarity between two quantum states is calculated using a fidelity-based quantum kernel.
-
-The kernel is then used by a classical SVM to perform classification.
-
-The implementation uses:
-
-- Python
-- Qiskit
-- Qiskit Machine Learning
-- Qiskit Aer
-- Scikit-learn
-
-### Quantum Feature Map
-
-The initial experiments use a ZZ-based quantum feature map.
-
-The number of retained PCA features determines the number of qubits used in the circuit.
-
-| PCA Features | Qubits |
-|---|---|
-| 2 | 2 |
-| 4 | 4 |
-| 6 | 6 |
-| 8 | 8 |
-
-The experiments investigate how feature dimensionality and circuit complexity affect predictive performance.
-
-## Experimental Design
-
-The classical and quantum models are evaluated using consistent data partitions.
-
-| Parameter | Configuration |
-|---|---|
-| Dataset | WDBC |
-| Train-test split | 80% / 20% |
-| Cross-validation | 5-fold stratified CV |
-| Feature reduction | PCA |
-| Qubit configurations | 2, 4, 6, 8 |
-| Quantum feature map | ZZFeatureMap |
-| Quantum backend | Statevector simulator |
-| Primary quantum model | Quantum Kernel SVM |
-
-The primary evaluation metrics are:
+Models will be evaluated using:
 
 - Accuracy
 - Precision
-- Recall (Sensitivity)
+- Recall / Sensitivity
 - Specificity
 - F1-score
 - ROC-AUC
 - Training time
 - Prediction time
 
-Additional quantum-specific measurements include:
+Because diabetes classification involves potential class imbalance, accuracy will not be used as the sole performance measure.
 
-- Number of qubits
-- Circuit depth
-- Number of circuit evaluations
-- Kernel matrix computation time
-- Simulation memory requirements
+## Experimental Design
 
-## Classical ML vs. QML Comparison
+The experiments will investigate:
 
-The project compares the predictive performance and computational requirements of classical and quantum machine learning models.
+- The effect of feature selection on classical model performance
+- The effect of feature selection on VQC performance
+- The relationship between selected feature count and qubit count
+- The computational cost of training quantum and classical models
+- Whether reducing the feature dimension changes the performance trade-off
 
-| Evaluation Metric | Classical ML | Quantum ML |
-|---|---|---|
-| Accuracy | Yes | Yes |
-| Precision | Yes | Yes |
-| Recall | Yes | Yes |
-| F1-score | Yes | Yes |
-| ROC-AUC | Yes | Yes |
-| Training time | Yes | Yes |
-| Prediction time | Yes | Yes |
-| Number of qubits | N/A | Yes |
-| Circuit depth | N/A | Yes |
-| Scalability | Evaluated | Evaluated |
-
-The purpose is to understand the trade-offs between classical and quantum approaches rather than assume that QML will outperform classical models.
-
-## Results
-
-Experimental results will be added after the models have been implemented and evaluated.
-
-The following table will be used to summarize the main results.
-
-| Model | Features | Qubits | Accuracy | F1-score | ROC-AUC | Runtime |
-|---|---:|---:|---:|---:|---:|---:|
-| Logistic Regression | 30 | N/A | TBD | TBD | TBD | TBD |
-| RBF-SVM | 30 | N/A | TBD | TBD | TBD | TBD |
-| Random Forest | 30 | N/A | TBD | TBD | TBD | TBD |
-| Quantum Kernel SVM | 2 | 2 | TBD | TBD | TBD | TBD |
-| Quantum Kernel SVM | 4 | 4 | TBD | TBD | TBD | TBD |
-| Quantum Kernel SVM | 6 | 6 | TBD | TBD | TBD | TBD |
-| Quantum Kernel SVM | 8 | 8 | TBD | TBD | TBD | TBD |
-
-**Note:** The results will be populated using actual experimental measurements. No performance advantage is assumed in advance.
+Where feasible, experiments will be repeated with multiple random seeds to assess result stability.
 
 ## Repository Structure
 
 ```text
 healthcare-qml/
-│
 ├── README.md
 ├── requirements.txt
-│
 ├── data/
 │   └── README.md
-│
 ├── notebooks/
 │   └── exploratory_analysis.ipynb
-│
 ├── src/
 │   ├── preprocessing.py
 │   ├── classical_models.py
-│   ├── quantum_kernel.py
-│   ├── vqc.py
+│   ├── vqc_model.py
 │   └── evaluation.py
-│
 ├── experiments/
-│   ├── feature_compression.py
-│   └── scalability_analysis.py
-│
+│   └── feature_selection.py
 ├── results/
 │   ├── metrics.csv
 │   └── plots/
-│
 └── paper/
     └── main.tex
 ```
 
 ## Installation
 
-### Prerequisites
-
-- Python 3.10 or compatible version
-- pip
-- Git
-
-### Clone the Repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/healthcare-qml.git
-
 cd healthcare-qml
 ```
 
-### Create a Virtual Environment
+Create and activate a virtual environment:
 
 ```bash
 python -m venv .venv
 ```
 
-Activate the environment.
-
-**macOS / Linux**
+macOS / Linux:
 
 ```bash
 source .venv/bin/activate
 ```
 
-**Windows**
+Windows:
 
 ```bash
 .venv\Scripts\activate
 ```
 
-### Install Dependencies
+Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -278,73 +186,56 @@ pip install -r requirements.txt
 
 ## Running the Experiments
 
-The experiments will be organized into separate scripts.
+The experiment scripts will be added as the project develops.
+
+The planned workflow is:
 
 ```bash
-python src/preprocessing.py
+python experiments/feature_selection.py
 ```
 
-```bash
-python src/classical_models.py
-```
+Results will be saved in the `results/` directory.
 
-```bash
-python src/quantum_kernel.py
-```
+## Results
 
-```bash
-python experiments/feature_compression.py
-```
+Experimental results will be added after the models have been trained and evaluated.
 
-The scripts will generate evaluation metrics and visualizations in the `results/` directory.
+| Model | Feature-Selection Strategy | Number of Features | Accuracy | F1-score | ROC-AUC |
+|---|---|---:|---:|---:|---:|
+| Logistic Regression | All Features | 8 | TBD | TBD | TBD |
+| Random Forest | All Features | 8 | TBD | TBD | TBD |
+| RBF-SVM | All Features | 8 | TBD | TBD | TBD |
+| VQC | Selected Features | TBD | TBD | TBD | TBD |
+
+No performance claims are made before completing the experiments.
 
 ## Limitations
 
-This project has several limitations:
+- The dataset is relatively small and population-specific.
+- The dataset may contain invalid or missing clinical measurements.
+- Quantum experiments may rely on classical simulation rather than physical quantum hardware.
+- VQC performance can depend on circuit architecture, optimizer, initialization, and measurement variability.
+- A simulator-based comparison does not demonstrate practical quantum advantage.
+- The dataset is not intended to establish a clinical diagnosis or provide general-purpose diabetes-risk predictions.
 
-1. The WDBC dataset is relatively small and may not represent the diversity of real-world patient populations.
-2. PCA may remove clinically relevant information during feature compression.
-3. Quantum kernel evaluation can become computationally expensive as the number of training samples increases.
-4. Statevector simulation does not demonstrate a practical quantum computational advantage.
-5. Quantum circuit noise and hardware limitations may affect performance on real quantum devices.
-6. Classification performance alone is insufficient to establish clinical usefulness.
-
-The models developed in this project are intended for research and educational purposes only. They are not medical diagnostic systems and should not be used to make clinical decisions.
-
-## Future Research Directions
+## Future Work
 
 Potential extensions include:
 
-- Evaluating additional quantum feature maps.
-- Comparing Quantum Kernel SVM with Variational Quantum Classifiers.
-- Investigating feature-selection methods for healthcare QML.
-- Evaluating performance under reduced training data.
-- Studying robustness to noisy quantum circuits.
-- Running experiments on IBM Quantum hardware, subject to access.
-- Extending the analysis to diabetes, heart disease, and other healthcare datasets.
-
-## Research Report
-
-A short IEEE-format research report will accompany this repository.
-
-The report will cover:
-
-- Background and motivation
-- Related work
-- Healthcare dataset and preprocessing
-- Classical machine learning baselines
-- Quantum machine learning methodology
-- Experimental results
-- Computational complexity and scalability
-- Limitations and future research
-
-**Report:** Coming soon.
+- Testing additional feature-selection methods
+- Exploring different quantum circuit architectures
+- Comparing VQC with quantum kernel methods
+- Evaluating model stability across repeated splits
+- Testing on additional healthcare datasets
+- Running experiments on available quantum hardware
 
 ## References
 
-1. UCI Machine Learning Repository, "Breast Cancer Wisconsin (Diagnostic) Data Set." [https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic](https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic)
+1. Pima Indians Diabetes Dataset, UCI Machine Learning Repository.
+2. Qiskit documentation: https://qiskit.org/documentation/
+3. Qiskit Machine Learning documentation: https://qiskit-community.github.io/qiskit-machine-learning/
+4. Scikit-learn documentation: https://scikit-learn.org/
 
-2. M. Schuld and N. Killoran, "Quantum Machine Learning in Feature Hilbert Spaces," *Physical Review Letters*, vol. 122, 040504, 2019. [https://doi.org/10.1103/PhysRevLett.122.040504](https://doi.org/10.1103/PhysRevLett.122.040504)
+## Disclaimer
 
-3. V. Havlíček et al., "Supervised Learning with Quantum-Enhanced Feature Spaces," *Nature*, vol. 567, pp. 209–212, 2019. [https://doi.org/10.1038/s41586-019-0980-2](https://doi.org/10.1038/s41586-019-0980-2)
-
+This project is for educational and research purposes only. It does not provide medical advice, diagnosis, or treatment recommendations. The results should not be used to make healthcare decisions.
