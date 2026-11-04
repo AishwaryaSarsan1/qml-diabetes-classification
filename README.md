@@ -193,59 +193,6 @@ Where feasible, experiments will be repeated using multiple random seeds
 to assess result stability.
 
 
-
-## ⚙️ Installation
-
-### 1. Clone the repository
-
-Replace `YOUR_USERNAME` with your GitHub username:
-
-``` bash
-git clone https://github.com/YOUR_USERNAME/healthcare-qml.git
-cd healthcare-qml
-```
-
-### 2. Create a virtual environment
-
-``` bash
-python -m venv .venv
-```
-
-Activate it:
-
-**macOS / Linux**
-
-``` bash
-source .venv/bin/activate
-```
-
-**Windows**
-
-``` bash
-.venv\Scripts\activate
-```
-
-### 3. Install dependencies
-
-``` bash
-python -m pip install -r requirements.txt
-```
-
-The project is expected to use Python, Qiskit, Qiskit Machine Learning,
-scikit-learn, NumPy, and pandas.
-
-## ▶️ Running the Experiments
-
-The experiment scripts will be developed as part of the project.
-
-The planned command is:
-
-``` bash
-python experiments/feature_selection.py
-```
-
-Generated metrics and plots will be saved in the `results/` directory.
-
 ## 📋 Expected Results
 
 The experiments are intended to provide a comparative evaluation of
@@ -306,8 +253,3 @@ Potential extensions include:
 
 
 ------------------------------------------------------------------------
-
-::: {align="center"}
-**Academic Research Project · Quantum Machine Learning · Healthcare
-Classification**
-:::
