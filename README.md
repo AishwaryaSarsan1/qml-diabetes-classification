@@ -1,4 +1,4 @@
-::: {align="center"}
+
 # 🩺 Evaluating Quantum Machine Learning for Diabetes Risk Prediction
 
 **A comparative study of classical machine learning and variational
