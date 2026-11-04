@@ -15,25 +15,6 @@ quantum classification for diabetes classification.**
 
 ------------------------------------------------------------------------
 
-## 📌 Table of Contents
-
--   [Overview](#-overview)
--   [Research Question](#-research-question)
--   [Dataset](#-dataset)
--   [Proposed Methodology](#-proposed-methodology)
--   [Models](#-models)
--   [Feature-Selection Strategies](#-feature-selection-strategies)
--   [Evaluation Metrics](#-evaluation-metrics)
--   [Experimental Design](#-experimental-design)
--   [Repository Structure](#-repository-structure)
--   [Installation](#-installation)
--   [Running the Experiments](#-running-the-experiments)
--   [Expected Results](#-expected-results)
--   [Limitations](#-limitations)
--   [Future Work](#-future-work)
--   [References](#-references)
--   [Disclaimer](#-disclaimer)
-
 ## 🎯 Overview
 
 This project proposes an investigation of **Quantum Machine Learning
@@ -219,38 +200,7 @@ The experiments will investigate:
 Where feasible, experiments will be repeated using multiple random seeds
 to assess result stability.
 
-## 📁 Repository Structure
 
-The planned repository organization is:
-
-``` text
-healthcare-qml/
-│
-├── README.md
-├── requirements.txt
-│
-├── data/
-│   └── README.md
-│
-├── notebooks/
-│   └── exploratory_analysis.ipynb
-│
-├── src/
-│   ├── preprocessing.py
-│   ├── classical_models.py
-│   ├── vqc_model.py
-│   └── evaluation.py
-│
-├── experiments/
-│   └── feature_selection.py
-│
-├── results/
-│   ├── metrics.csv
-│   └── plots/
-│
-└── paper/
-    └── main.tex
-```
 
 ## ⚙️ Installation
 
@@ -362,12 +312,6 @@ Potential extensions include:
     https://qiskit-community.github.io/qiskit-machine-learning/
 4.  **Scikit-learn Documentation:** https://scikit-learn.org/
 
-## ⚕️ Disclaimer
-
-This project is for educational and academic research purposes only. It
-does not provide medical advice, diagnosis, or treatment
-recommendations. The results should not be used to make healthcare
-decisions.
 
 ------------------------------------------------------------------------
 
