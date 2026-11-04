@@ -1,14 +1,6 @@
 ::: {align="center"}
 # 🩺 Evaluating Quantum Machine Learning for Diabetes Risk Prediction
 
-### Under Different Feature-Selection Strategies
-
-[![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white)](https://www.python.org/)
-[![Qiskit](https://img.shields.io/badge/Qiskit-Quantum%20Computing-6929C4?logo=qiskit&logoColor=white)](https://qiskit.org/)
-[![scikit-learn](https://img.shields.io/badge/scikit--learn-Machine%20Learning-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
-[![Research](https://img.shields.io/badge/Project-Academic%20Research-informational)](#)
-[![Status](https://img.shields.io/badge/Status-Proposal-yellow)](#)
-
 **A comparative study of classical machine learning and variational
 quantum classification for diabetes classification.**
 :::
