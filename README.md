@@ -297,4 +297,3 @@ ChatGPT was used as an AI assistance tool during project development for:
 - Debugging Python and Qiskit implementation issues
 - Reviewing experiment design and evaluation metrics
 - Improving project documentation and report structure
-All code, experimental configurations, outputs, and interpretations should be reviewed and verified by the project author before submission or publication.
