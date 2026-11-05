@@ -14,7 +14,7 @@ Table of Contents
 ## 1. Project Title and Description
 ### Project Title
 Evaluating Quantum Machine Learning for Diabetes Risk Prediction Under Different Feature-Selection Strategies
-Brief Overview
+### Brief Overview
 This project explores Quantum Machine Learning for a healthcare classification problem: predicting diabetes status from patient health measurements.
 
 The project aims to:
