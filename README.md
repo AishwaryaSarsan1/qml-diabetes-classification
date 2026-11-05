@@ -1,6 +1,6 @@
 # Diabetes Healthcare QML
 A research-oriented Python project exploring Quantum Machine Learning (QML) for diabetes classification. The project compares a Qiskit Variational Quantum Classifier (VQC) with classical machine learning models under different feature-selection strategies.
-Table of Contents
+## Table of Contents
 - 1. Project Title and Description
 - 2. Prerequisites
 - 3. Installation Instructions
