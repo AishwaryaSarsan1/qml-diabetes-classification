@@ -29,7 +29,6 @@ The experiments use the Pima Indians Diabetes Dataset.
 - Target: Outcome (0 = non-diabetic, 1 = diabetic)
 - Class distribution: 500 records in class 0 and 268 records in class 1
 The predictor variables include health measurements such as glucose, blood pressure, skin thickness, insulin, BMI, age, and pregnancies.
-This dataset is used for educational research only. It is not a clinical diagnostic tool. Verify the dataset source and usage terms before redistributing it.
 
 Research Question
 How do different feature-selection strategies affect the predictive performance and computational requirements of a Variational Quantum Classifier compared with classical machine learning models for diabetes classification?
