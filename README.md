@@ -186,21 +186,26 @@ Healthcare Classification
 - Diabetes classification using patient health measurements
 - Binary prediction of diabetes outcome
 - Educational research using a public healthcare dataset
+
+
 Feature-Selection Experiments
 - All-feature baseline
 - Correlation-based selection
 - ANOVA SelectKBest
 - Random Forest feature importance
 - Comparison across selected feature counts
+  
 Classical ML Baselines
 - Logistic Regression
 - Random Forest
 - RBF Support Vector Machine
+  
 Quantum Machine Learning
 - Qiskit Variational Quantum Classifier
 - ZZFeatureMap data encoding
 - RealAmplitudes variational ansatz
 - Qubit count based on selected features
+  
 Evaluation and Reporting
 - Classification performance metrics
 - Training and prediction time
