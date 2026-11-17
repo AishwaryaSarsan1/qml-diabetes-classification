@@ -13,7 +13,7 @@ A research-oriented Python project exploring Quantum Machine Learning (QML) for 
 - 10. AI Assistance Disclaimer
 ## 1. Project Title and Description
 ### Project Title
-Evaluating Quantum Machine Learning for Diabetes Risk Prediction Under Different Feature-Selection Strategies
+Feature-Selection Effects on Variational Quantum Classifier Performance for Diabetes Classification: A Controlled Comparison with Classical Models
 ### Brief Overview
 This project explores Quantum Machine Learning for a healthcare classification problem: predicting diabetes status from patient health measurements.
 
